@@ -13,7 +13,7 @@
 #include <termio.h>
 
 int key = 0;
-int csPin = 22;
+int csPin = 8;
 ArducamCamera myCAM;
 int count = 0;
 char name[10] = {0};
