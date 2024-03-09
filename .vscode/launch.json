@@ -1,0 +1,74 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Remote Debug on Raspberry Pi",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/camera",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            //"miDebuggerPath": "arm-linux-gnueabihf-gdb",
+            "miDebuggerPath": "gdb-multiarch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerServerAddress": "192.168.0.66:2000",
+            "preLaunchTask": "transfer-binary",
+            // Start gdbserver on the remote machine
+        },
+        {
+            "type": "gdb",
+            "request": "attach",
+            "name": "Attach to gdbserver",
+            "executable": "${workspaceFolder}/build/camera",
+            "target": "extended-remote 192.168.0.66:2000",
+            "remote": false,
+            "printCalls": true,
+            "valuesFormatting": "parseText",
+            "cwd": "${workspaceRoot}",
+            "gdbpath": "gdb-multiarch",
+            "autorun": [
+                //"any gdb commands to initiate your environment, if it is needed"
+                //"file ${workspaceFolder}/build/camera", // Load symbols
+                //"remote put ${workspaceFolder}/build/camera /home/beuss/test/camera",
+                "set remote exec-file /home/beuss/test/camera",
+                "tbreak main",
+                "run"
+            ],
+            "preLaunchTask": "transfer-binary",
+        },
+        {
+            "name": "Remote Debug on Raspberry Pi (SSH)",
+            "type": "gdb",
+            "request": "launch",
+            "target": "${workspaceFolder}/build/camera",
+            "cwd": "${workspaceRoot}",
+            "ssh": {
+                //"forwardX11": true,
+                "host": "192.168.0.66",
+                //"cwd": "/home/beuss/test/",
+                "cwd": "${workspaceRoot}",
+                "keyfile": "/home/beuss/.ssh/beuss-titan",
+                //"password": "password123",
+                "user": "beuss",
+                "x11host": "localhost",
+                // x11port may also be specified as string containing only numbers (useful to use configuration variables)
+                "x11port": 6000,
+                // Optional, content will be executed on the SSH host before the debugger call.
+                //"bootstrap": "source /home/remoteUser/some-env"
+            }
+        }
+    ]
+}

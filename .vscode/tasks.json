@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cmake",
+			"label": "CMake: build",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+			"label": "transfer-binary",
+			"type": "shell",
+			"command": "scp",
+			"args": [
+				"${workspaceFolder}/build/camera",
+				"raspi0w:/home/beuss/test"
+			],
+			"problemMatcher": [],
+			"dependsOn": [
+				"CMake: build"
+			],
+		},
+		{
+			"label": "start-gdbserver",
+			"type": "shell",
+			"command": "ssh",
+			"args": [
+				"beuss@raspi0w",
+				"bash -l -c 'gdbserver :2000 /home/beuss/test/camera'"
+			],
+			"dependsOn": [
+				"transfer-binary"
+			]
+		}
+	]
+}
