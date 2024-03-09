@@ -15,7 +15,7 @@
 		{
 			"label": "transfer-binary",
 			"type": "shell",
-			"command": "scp",
+			"command": "rsync",
 			"args": [
 				"${workspaceFolder}/build/camera",
 				"raspi0w:/home/beuss/test"
