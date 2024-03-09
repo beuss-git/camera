@@ -255,6 +255,7 @@ CamStatus cameraBegin(ArducamCamera *camera) {
 }
 
 void cameraSetCapture(ArducamCamera *camera) {
+  flushFifo(camera);
   clearFifoFlag(camera);
   startCapture(camera);
   while (getBit(camera, ARDUCHIP_TRIG, CAP_DONE_MASK) == 0)
