@@ -24,7 +24,7 @@ extern "C" {
 #endif
 
 /// @cond
-#define TRUE  1
+#define TRUE 1
 #define FALSE 0
 #ifndef Bool
 #define Bool char
@@ -38,10 +38,10 @@ extern "C" {
  * @brief SDK version update time
  */
 struct SdkDate {
-    uint8_t year;
-    uint8_t month;
-    uint8_t day;
-    uint8_t version;
+  uint8_t year;
+  uint8_t month;
+  uint8_t day;
+  uint8_t version;
 };
 
 /**
@@ -49,8 +49,8 @@ struct SdkDate {
  * @brief Basic information of the sdk
  */
 union SdkInfo {
-    unsigned long sdkVersion; /**<Sdk version */
-    struct SdkDate sdkInfo;
+  unsigned long sdkVersion; /**<Sdk version */
+  struct SdkDate sdkInfo;
 };
 
 /**
@@ -59,20 +59,21 @@ union SdkInfo {
  */
 
 struct CameraInfo {
-    char* cameraId;                 /**<Model of camera module */
-    int supportResolution;          /**<Resolution supported by the camera module */
-    int supportSpecialEffects;      /**<Special effects supported by the camera
-                                       module */
-    unsigned long exposureValueMax; /**<Maximum exposure time supported by the
-                                       camera module */
-    unsigned int exposureValueMin;  /**<Minimum exposure time supported by the
-                                       camera module */
-    unsigned int gainValueMax;      /**<Maximum gain supported by the camera module */
-    unsigned int gainValueMin;      /**<Minimum gain supported by the camera module */
-    unsigned char supportFocus;     /**<Does the camera module support the focus function */
-    unsigned char supportSharpness; /**<Does the camera module support the
-                                       sharpening function */
-    unsigned char deviceAddress;
+  char *cameraId;            /**<Model of camera module */
+  int supportResolution;     /**<Resolution supported by the camera module */
+  int supportSpecialEffects; /**<Special effects supported by the camera
+                                module */
+  unsigned long exposureValueMax; /**<Maximum exposure time supported by the
+                                     camera module */
+  unsigned int exposureValueMin;  /**<Minimum exposure time supported by the
+                                     camera module */
+  unsigned int gainValueMax; /**<Maximum gain supported by the camera module */
+  unsigned int gainValueMin; /**<Minimum gain supported by the camera module */
+  unsigned char
+      supportFocus; /**<Does the camera module support the focus function */
+  unsigned char supportSharpness; /**<Does the camera module support the
+                                     sharpening function */
+  unsigned char deviceAddress;
 };
 
 /**
@@ -80,8 +81,8 @@ struct CameraInfo {
  * @brief Camera status
  */
 typedef enum {
-    CAM_ERR_SUCCESS     = 0,  /**<Operation succeeded*/
-    CAM_ERR_NO_CALLBACK = -1, /**< No callback function is registered*/
+  CAM_ERR_SUCCESS = 0,      /**<Operation succeeded*/
+  CAM_ERR_NO_CALLBACK = -1, /**< No callback function is registered*/
 } CamStatus;
 
 /**
@@ -89,26 +90,26 @@ typedef enum {
  * @brief Configure camera resolution
  */
 typedef enum {
-    CAM_IMAGE_MODE_QQVGA  = 0x00,  /**<160x120 */
-    CAM_IMAGE_MODE_QVGA   = 0x01,  /**<320x240*/
-    CAM_IMAGE_MODE_VGA    = 0x02,  /**<640x480*/
-    CAM_IMAGE_MODE_SVGA   = 0x03,  /**<800x600*/
-    CAM_IMAGE_MODE_HD     = 0x04,  /**<1280x720*/
-    CAM_IMAGE_MODE_SXGAM  = 0x05,  /**<1280x960*/
-    CAM_IMAGE_MODE_UXGA   = 0x06,  /**<1600x1200*/
-    CAM_IMAGE_MODE_FHD    = 0x07,  /**<1920x1080*/
-    CAM_IMAGE_MODE_QXGA   = 0x08,  /**<2048x1536*/
-    CAM_IMAGE_MODE_WQXGA2 = 0x09,  /**<2592x1944*/
-    CAM_IMAGE_MODE_96X96  = 0x0a,  /**<96x96*/
-    CAM_IMAGE_MODE_128X128 = 0x0b, /**<128x128*/
-    CAM_IMAGE_MODE_320X320 = 0x0c, /**<320x320*/
-    /// @cond
-    CAM_IMAGE_MODE_12      = 0x0d, /**<Reserve*/
-    CAM_IMAGE_MODE_13      = 0x0e, /**<Reserve*/
-    CAM_IMAGE_MODE_14      = 0x0f, /**<Reserve*/
-    CAM_IMAGE_MODE_15      = 0x10, /**<Reserve*/
-    CAM_IMAGE_MODE_NONE,
-    /// @endcond
+  CAM_IMAGE_MODE_QQVGA = 0x00,   /**<160x120 */
+  CAM_IMAGE_MODE_QVGA = 0x01,    /**<320x240*/
+  CAM_IMAGE_MODE_VGA = 0x02,     /**<640x480*/
+  CAM_IMAGE_MODE_SVGA = 0x03,    /**<800x600*/
+  CAM_IMAGE_MODE_HD = 0x04,      /**<1280x720*/
+  CAM_IMAGE_MODE_SXGAM = 0x05,   /**<1280x960*/
+  CAM_IMAGE_MODE_UXGA = 0x06,    /**<1600x1200*/
+  CAM_IMAGE_MODE_FHD = 0x07,     /**<1920x1080*/
+  CAM_IMAGE_MODE_QXGA = 0x08,    /**<2048x1536*/
+  CAM_IMAGE_MODE_WQXGA2 = 0x09,  /**<2592x1944*/
+  CAM_IMAGE_MODE_96X96 = 0x0a,   /**<96x96*/
+  CAM_IMAGE_MODE_128X128 = 0x0b, /**<128x128*/
+  CAM_IMAGE_MODE_320X320 = 0x0c, /**<320x320*/
+  /// @cond
+  CAM_IMAGE_MODE_12 = 0x0d, /**<Reserve*/
+  CAM_IMAGE_MODE_13 = 0x0e, /**<Reserve*/
+  CAM_IMAGE_MODE_14 = 0x0f, /**<Reserve*/
+  CAM_IMAGE_MODE_15 = 0x10, /**<Reserve*/
+  CAM_IMAGE_MODE_NONE,
+  /// @endcond
 } CAM_IMAGE_MODE;
 
 /**
@@ -116,13 +117,13 @@ typedef enum {
  * @brief Configure camera contrast level
  */
 typedef enum {
-    CAM_CONTRAST_LEVEL_MINUS_3 = 6, /**<Level -3 */
-    CAM_CONTRAST_LEVEL_MINUS_2 = 4, /**<Level -2 */
-    CAM_CONTRAST_LEVEL_MINUS_1 = 2, /**<Level -1 */
-    CAM_CONTRAST_LEVEL_DEFAULT = 0, /**<Level Default*/
-    CAM_CONTRAST_LEVEL_1       = 1, /**<Level +1 */
-    CAM_CONTRAST_LEVEL_2       = 3, /**<Level +2 */
-    CAM_CONTRAST_LEVEL_3       = 5, /**<Level +3 */
+  CAM_CONTRAST_LEVEL_MINUS_3 = 6, /**<Level -3 */
+  CAM_CONTRAST_LEVEL_MINUS_2 = 4, /**<Level -2 */
+  CAM_CONTRAST_LEVEL_MINUS_1 = 2, /**<Level -1 */
+  CAM_CONTRAST_LEVEL_DEFAULT = 0, /**<Level Default*/
+  CAM_CONTRAST_LEVEL_1 = 1,       /**<Level +1 */
+  CAM_CONTRAST_LEVEL_2 = 3,       /**<Level +2 */
+  CAM_CONTRAST_LEVEL_3 = 5,       /**<Level +3 */
 } CAM_CONTRAST_LEVEL;
 
 /**
@@ -130,13 +131,13 @@ typedef enum {
  * @brief Configure camera EV level
  */
 typedef enum {
-    CAM_EV_LEVEL_MINUS_3 = 6, /**<Level -3 */
-    CAM_EV_LEVEL_MINUS_2 = 4, /**<Level -2 */
-    CAM_EV_LEVEL_MINUS_1 = 2, /**<Level -1 */
-    CAM_EV_LEVEL_DEFAULT = 0, /**<Level Default*/
-    CAM_EV_LEVEL_1       = 1, /**<Level +1 */
-    CAM_EV_LEVEL_2       = 3, /**<Level +2 */
-    CAM_EV_LEVEL_3       = 5, /**<Level +3 */
+  CAM_EV_LEVEL_MINUS_3 = 6, /**<Level -3 */
+  CAM_EV_LEVEL_MINUS_2 = 4, /**<Level -2 */
+  CAM_EV_LEVEL_MINUS_1 = 2, /**<Level -1 */
+  CAM_EV_LEVEL_DEFAULT = 0, /**<Level Default*/
+  CAM_EV_LEVEL_1 = 1,       /**<Level +1 */
+  CAM_EV_LEVEL_2 = 3,       /**<Level +2 */
+  CAM_EV_LEVEL_3 = 5,       /**<Level +3 */
 } CAM_EV_LEVEL;
 
 /**
@@ -144,13 +145,13 @@ typedef enum {
  * @brief Configure camera stauration  level
  */
 typedef enum {
-    CAM_STAURATION_LEVEL_MINUS_3 = 6, /**<Level -3 */
-    CAM_STAURATION_LEVEL_MINUS_2 = 4, /**<Level -2 */
-    CAM_STAURATION_LEVEL_MINUS_1 = 2, /**<Level -1 */
-    CAM_STAURATION_LEVEL_DEFAULT = 0, /**<Level Default*/
-    CAM_STAURATION_LEVEL_1       = 1, /**<Level +1 */
-    CAM_STAURATION_LEVEL_2       = 3, /**<Level +2 */
-    CAM_STAURATION_LEVEL_3       = 5, /**<Level +3 */
+  CAM_STAURATION_LEVEL_MINUS_3 = 6, /**<Level -3 */
+  CAM_STAURATION_LEVEL_MINUS_2 = 4, /**<Level -2 */
+  CAM_STAURATION_LEVEL_MINUS_1 = 2, /**<Level -1 */
+  CAM_STAURATION_LEVEL_DEFAULT = 0, /**<Level Default*/
+  CAM_STAURATION_LEVEL_1 = 1,       /**<Level +1 */
+  CAM_STAURATION_LEVEL_2 = 3,       /**<Level +2 */
+  CAM_STAURATION_LEVEL_3 = 5,       /**<Level +3 */
 } CAM_STAURATION_LEVEL;
 
 /**
@@ -158,15 +159,15 @@ typedef enum {
  * @brief Configure camera brightness level
  */
 typedef enum {
-    CAM_BRIGHTNESS_LEVEL_MINUS_4 = 8, /**<Level -4 */
-    CAM_BRIGHTNESS_LEVEL_MINUS_3 = 6, /**<Level -3 */
-    CAM_BRIGHTNESS_LEVEL_MINUS_2 = 4, /**<Level -2 */
-    CAM_BRIGHTNESS_LEVEL_MINUS_1 = 2, /**<Level -1 */
-    CAM_BRIGHTNESS_LEVEL_DEFAULT = 0, /**<Level Default*/
-    CAM_BRIGHTNESS_LEVEL_1       = 1, /**<Level +1 */
-    CAM_BRIGHTNESS_LEVEL_2       = 3, /**<Level +2 */
-    CAM_BRIGHTNESS_LEVEL_3       = 5, /**<Level +3 */
-    CAM_BRIGHTNESS_LEVEL_4       = 7, /**<Level +4 */
+  CAM_BRIGHTNESS_LEVEL_MINUS_4 = 8, /**<Level -4 */
+  CAM_BRIGHTNESS_LEVEL_MINUS_3 = 6, /**<Level -3 */
+  CAM_BRIGHTNESS_LEVEL_MINUS_2 = 4, /**<Level -2 */
+  CAM_BRIGHTNESS_LEVEL_MINUS_1 = 2, /**<Level -1 */
+  CAM_BRIGHTNESS_LEVEL_DEFAULT = 0, /**<Level Default*/
+  CAM_BRIGHTNESS_LEVEL_1 = 1,       /**<Level +1 */
+  CAM_BRIGHTNESS_LEVEL_2 = 3,       /**<Level +2 */
+  CAM_BRIGHTNESS_LEVEL_3 = 5,       /**<Level +3 */
+  CAM_BRIGHTNESS_LEVEL_4 = 7,       /**<Level +4 */
 } CAM_BRIGHTNESS_LEVEL;
 
 /**
@@ -174,15 +175,15 @@ typedef enum {
  * @brief Configure camera Sharpness level
  */
 typedef enum {
-    CAM_SHARPNESS_LEVEL_AUTO = 0, /**<Sharpness Auto */
-    CAM_SHARPNESS_LEVEL_1,        /**<Sharpness Level 1 */
-    CAM_SHARPNESS_LEVEL_2,        /**<Sharpness Level 2 */
-    CAM_SHARPNESS_LEVEL_3,        /**<Sharpness Level 3 */
-    CAM_SHARPNESS_LEVEL_4,        /**<Sharpness Level 4 */
-    CAM_SHARPNESS_LEVEL_5,        /**<Sharpness Level 5 */
-    CAM_SHARPNESS_LEVEL_6,        /**<Sharpness Level 6 */
-    CAM_SHARPNESS_LEVEL_7,        /**<Sharpness Level 7 */
-    CAM_SHARPNESS_LEVEL_8,        /**<Sharpness Level 8 */
+  CAM_SHARPNESS_LEVEL_AUTO = 0, /**<Sharpness Auto */
+  CAM_SHARPNESS_LEVEL_1,        /**<Sharpness Level 1 */
+  CAM_SHARPNESS_LEVEL_2,        /**<Sharpness Level 2 */
+  CAM_SHARPNESS_LEVEL_3,        /**<Sharpness Level 3 */
+  CAM_SHARPNESS_LEVEL_4,        /**<Sharpness Level 4 */
+  CAM_SHARPNESS_LEVEL_5,        /**<Sharpness Level 5 */
+  CAM_SHARPNESS_LEVEL_6,        /**<Sharpness Level 6 */
+  CAM_SHARPNESS_LEVEL_7,        /**<Sharpness Level 7 */
+  CAM_SHARPNESS_LEVEL_8,        /**<Sharpness Level 8 */
 } CAM_SHARPNESS_LEVEL;
 
 /**
@@ -190,8 +191,8 @@ typedef enum {
  * @brief Configure resolution in video streaming mode
  */
 typedef enum {
-    CAM_VIDEO_MODE_0 = 1, /**< 320x240 */
-    CAM_VIDEO_MODE_1 = 2, /**< 640x480 */
+  CAM_VIDEO_MODE_0 = 1, /**< 320x240 */
+  CAM_VIDEO_MODE_1 = 2, /**< 640x480 */
 } CAM_VIDEO_MODE;
 
 /**
@@ -199,10 +200,10 @@ typedef enum {
  * @brief Configure image pixel format
  */
 typedef enum {
-    CAM_IMAGE_PIX_FMT_RGB565 = 0x02, /**< RGB565 format */
-    CAM_IMAGE_PIX_FMT_JPG    = 0x01, /**< JPEG format */
-    CAM_IMAGE_PIX_FMT_YUV    = 0x03, /**< YUV format */
-    CAM_IMAGE_PIX_FMT_NONE,          /**< No defined format */
+  CAM_IMAGE_PIX_FMT_RGB565 = 0x02, /**< RGB565 format */
+  CAM_IMAGE_PIX_FMT_JPG = 0x01,    /**< JPEG format */
+  CAM_IMAGE_PIX_FMT_YUV = 0x03,    /**< YUV format */
+  CAM_IMAGE_PIX_FMT_NONE,          /**< No defined format */
 } CAM_IMAGE_PIX_FMT;
 
 /**
@@ -210,11 +211,11 @@ typedef enum {
  * @brief Configure white balance mode
  */
 typedef enum {
-    CAM_WHITE_BALANCE_MODE_DEFAULT = 0, /**< Auto */
-    CAM_WHITE_BALANCE_MODE_SUNNY,       /**< Sunny */
-    CAM_WHITE_BALANCE_MODE_OFFICE,      /**< Office */
-    CAM_WHITE_BALANCE_MODE_CLOUDY,      /**< Cloudy*/
-    CAM_WHITE_BALANCE_MODE_HOME,        /**< Home */
+  CAM_WHITE_BALANCE_MODE_DEFAULT = 0, /**< Auto */
+  CAM_WHITE_BALANCE_MODE_SUNNY,       /**< Sunny */
+  CAM_WHITE_BALANCE_MODE_OFFICE,      /**< Office */
+  CAM_WHITE_BALANCE_MODE_CLOUDY,      /**< Cloudy*/
+  CAM_WHITE_BALANCE_MODE_HOME,        /**< Home */
 } CAM_WHITE_BALANCE;
 
 /**
@@ -222,32 +223,33 @@ typedef enum {
  * @brief Configure special effects
  */
 typedef enum {
-    CAM_COLOR_FX_NONE = 0,      /**< no effect   */
-    CAM_COLOR_FX_BLUEISH,       /**< cool light   */
-    CAM_COLOR_FX_REDISH,        /**< warm   */
-    CAM_COLOR_FX_BW,            /**< Black/white   */
-    CAM_COLOR_FX_SEPIA,         /**<Sepia   */
-    CAM_COLOR_FX_NEGATIVE,      /**<positive/negative inversion  */
-    CAM_COLOR_FX_GRASS_GREEN,   /**<Grass green */
-    CAM_COLOR_FX_OVER_EXPOSURE, /**<Over exposure*/
-    CAM_COLOR_FX_SOLARIZE,      /**< Solarize   */
+  CAM_COLOR_FX_NONE = 0,      /**< no effect   */
+  CAM_COLOR_FX_BLUEISH,       /**< cool light   */
+  CAM_COLOR_FX_REDISH,        /**< warm   */
+  CAM_COLOR_FX_BW,            /**< Black/white   */
+  CAM_COLOR_FX_SEPIA,         /**<Sepia   */
+  CAM_COLOR_FX_NEGATIVE,      /**<positive/negative inversion  */
+  CAM_COLOR_FX_GRASS_GREEN,   /**<Grass green */
+  CAM_COLOR_FX_OVER_EXPOSURE, /**<Over exposure*/
+  CAM_COLOR_FX_SOLARIZE,      /**< Solarize   */
 } CAM_COLOR_FX;
 
 typedef enum {
-    HIGH_QUALITY    = 0,
-    DEFAULT_QUALITY = 1,
-    LOW_QUALITY     = 2,
+  HIGH_QUALITY = 0,
+  DEFAULT_QUALITY = 1,
+  LOW_QUALITY = 2,
 } IMAGE_QUALITY;
 
 enum {
-    SENSOR_5MP_1 = 0x81,
-    SENSOR_3MP_1 = 0x82,
-    SENSOR_5MP_2 = 0x83, /* 2592x1936 */
-    SENSOR_3MP_2 = 0x84,
+  SENSOR_5MP_1 = 0x81,
+  SENSOR_3MP_1 = 0x82,
+  SENSOR_5MP_2 = 0x83, /* 2592x1936 */
+  SENSOR_3MP_2 = 0x84,
 };
 
-typedef uint8_t (*BUFFER_CALLBACK)(uint8_t* buffer, uint8_t lenght); /**<Callback function prototype  */
-typedef void (*STOP_HANDLE)(void);                                   /**<Callback function prototype  */
+typedef uint8_t (*BUFFER_CALLBACK)(
+    uint8_t *buffer, uint8_t lenght); /**<Callback function prototype  */
+typedef void (*STOP_HANDLE)(void);    /**<Callback function prototype  */
 
 /**
  * @struct ArducamCamera
@@ -255,69 +257,74 @@ typedef void (*STOP_HANDLE)(void);                                   /**<Callbac
  */
 
 typedef struct {
-    int csPin;                                      /**< CS pin */
-    uint32_t totalLength;                           /**< The total length of the picture */
-    uint32_t receivedLength;                        /**< The remaining length of the picture */
-    uint8_t blockSize;                              /**< The length of the callback function transmission */
-    uint8_t cameraId;                               /**< Model of camera module */
-    // uint8_t cameraDataFormat;                       /**< The currently set image pixel format */
-    uint8_t burstFirstFlag;                         /**< Flag bit for reading data for the first time in
-                                                       burst mode */
-    uint8_t previewMode;                            /**< Stream mode flag */
-    uint8_t currentPixelFormat;                     /**< The currently set image pixel format */
-    uint8_t currentPictureMode;                     /**< Currently set resolution */
-    struct CameraInfo myCameraInfo;                 /**< Basic information of the current camera */
-    const struct CameraOperations* arducamCameraOp; /**< Camera function interface */
-    BUFFER_CALLBACK callBackFunction;               /**< Camera callback function */
-    STOP_HANDLE handle;
-    uint8_t verDateAndNumber[4]; /**< Camera firmware version*/
-    union SdkInfo* currentSDK;   /**< Current SDK version*/
+  int csPin;               /**< CS pin */
+  uint32_t totalLength;    /**< The total length of the picture */
+  uint32_t receivedLength; /**< The remaining length of the picture */
+  uint8_t blockSize; /**< The length of the callback function transmission */
+  uint8_t cameraId;  /**< Model of camera module */
+  // uint8_t cameraDataFormat;                       /**< The currently set
+  // image pixel format */
+  uint8_t burstFirstFlag; /**< Flag bit for reading data for the first time in
+                             burst mode */
+  uint8_t previewMode;    /**< Stream mode flag */
+  uint8_t currentPixelFormat; /**< The currently set image pixel format */
+  uint8_t currentPictureMode; /**< Currently set resolution */
+  struct CameraInfo
+      myCameraInfo; /**< Basic information of the current camera */
+  const struct CameraOperations
+      *arducamCameraOp;             /**< Camera function interface */
+  BUFFER_CALLBACK callBackFunction; /**< Camera callback function */
+  STOP_HANDLE handle;
+  uint8_t verDateAndNumber[4]; /**< Camera firmware version*/
+  union SdkInfo *currentSDK;   /**< Current SDK version*/
 } ArducamCamera;
 
 /// @cond
 struct CameraOperations {
-    CamStatus (*reset)(ArducamCamera*);
-    CamStatus (*begin)(ArducamCamera*);
-    CamStatus (*takePicture)(ArducamCamera*, CAM_IMAGE_MODE, CAM_IMAGE_PIX_FMT);
-    CamStatus (*takeMultiPictures)(ArducamCamera*, CAM_IMAGE_MODE, CAM_IMAGE_PIX_FMT, uint8_t);
-    CamStatus (*startPreview)(ArducamCamera*, CAM_VIDEO_MODE);
-    void (*captureThread)(ArducamCamera*);
-    CamStatus (*stopPreview)(ArducamCamera*);
-    CamStatus (*setAutoExposure)(ArducamCamera*, uint8_t);
-    CamStatus (*setAbsoluteExposure)(ArducamCamera*, uint32_t);
-    CamStatus (*setAutoISOSensitive)(ArducamCamera*, uint8_t);
-    CamStatus (*setISOSensitivity)(ArducamCamera*, int);
-    CamStatus (*setAutoWhiteBalance)(ArducamCamera*, uint8_t);
-    CamStatus (*setAutoWhiteBalanceMode)(ArducamCamera*, CAM_WHITE_BALANCE);
-    CamStatus (*setColorEffect)(ArducamCamera*, CAM_COLOR_FX);
-    CamStatus (*setAutoFocus)(ArducamCamera*, uint8_t);
-    CamStatus (*setSaturation)(ArducamCamera*, CAM_STAURATION_LEVEL);
-    CamStatus (*setEV)(ArducamCamera*, CAM_EV_LEVEL);
-    CamStatus (*setContrast)(ArducamCamera*, CAM_CONTRAST_LEVEL);
-    CamStatus (*setBrightness)(ArducamCamera*, CAM_BRIGHTNESS_LEVEL);
-    CamStatus (*setSharpness)(ArducamCamera*, CAM_SHARPNESS_LEVEL);
-    CamStatus (*setImageQuality)(ArducamCamera* camera, IMAGE_QUALITY qualtiy);
-    uint32_t (*imageAvailable)(ArducamCamera*);
-    void (*csHigh)(ArducamCamera*);
-    void (*csLow)(ArducamCamera*);
-    uint32_t (*readBuff)(ArducamCamera*, uint8_t*, uint32_t);
-    uint8_t (*readByte)(ArducamCamera*);
-    void (*debugWriteRegister)(ArducamCamera*, uint8_t*);
-    void (*writeReg)(ArducamCamera*, uint8_t, uint8_t);
-    uint8_t (*readReg)(ArducamCamera*, uint8_t);
-    uint8_t (*busRead)(ArducamCamera*, int);
-    uint8_t (*busWrite)(ArducamCamera*, int, int);
-    void (*flushFifo)(ArducamCamera*);
-    void (*startCapture)(ArducamCamera*);
-    void (*clearFifoFlag)(ArducamCamera*);
-    uint32_t (*readFifoLength)(ArducamCamera*);
-    uint8_t (*getBit)(ArducamCamera*, uint8_t, uint8_t);
-    void (*setFifoBurst)(ArducamCamera*);
-    void (*setCapture)(ArducamCamera*);
-    void (*waitI2cIdle)(ArducamCamera*);
-    void (*lowPowerOn)(ArducamCamera*);
-    void (*lowPowerOff)(ArducamCamera*);
-    void (*registerCallback)(ArducamCamera*, BUFFER_CALLBACK, uint8_t, STOP_HANDLE);
+  CamStatus (*reset)(ArducamCamera *);
+  CamStatus (*begin)(ArducamCamera *);
+  CamStatus (*takePicture)(ArducamCamera *, CAM_IMAGE_MODE, CAM_IMAGE_PIX_FMT);
+  CamStatus (*takeMultiPictures)(ArducamCamera *, CAM_IMAGE_MODE,
+                                 CAM_IMAGE_PIX_FMT, uint8_t);
+  CamStatus (*startPreview)(ArducamCamera *, CAM_VIDEO_MODE);
+  void (*captureThread)(ArducamCamera *);
+  CamStatus (*stopPreview)(ArducamCamera *);
+  CamStatus (*setAutoExposure)(ArducamCamera *, uint8_t);
+  CamStatus (*setAbsoluteExposure)(ArducamCamera *, uint32_t);
+  CamStatus (*setAutoISOSensitive)(ArducamCamera *, uint8_t);
+  CamStatus (*setISOSensitivity)(ArducamCamera *, int);
+  CamStatus (*setAutoWhiteBalance)(ArducamCamera *, uint8_t);
+  CamStatus (*setAutoWhiteBalanceMode)(ArducamCamera *, CAM_WHITE_BALANCE);
+  CamStatus (*setColorEffect)(ArducamCamera *, CAM_COLOR_FX);
+  CamStatus (*setAutoFocus)(ArducamCamera *, uint8_t);
+  CamStatus (*setSaturation)(ArducamCamera *, CAM_STAURATION_LEVEL);
+  CamStatus (*setEV)(ArducamCamera *, CAM_EV_LEVEL);
+  CamStatus (*setContrast)(ArducamCamera *, CAM_CONTRAST_LEVEL);
+  CamStatus (*setBrightness)(ArducamCamera *, CAM_BRIGHTNESS_LEVEL);
+  CamStatus (*setSharpness)(ArducamCamera *, CAM_SHARPNESS_LEVEL);
+  CamStatus (*setImageQuality)(ArducamCamera *camera, IMAGE_QUALITY qualtiy);
+  uint32_t (*imageAvailable)(ArducamCamera *);
+  void (*csHigh)(ArducamCamera *);
+  void (*csLow)(ArducamCamera *);
+  uint32_t (*readBuff)(ArducamCamera *, uint8_t *, uint32_t);
+  uint8_t (*readByte)(ArducamCamera *);
+  void (*debugWriteRegister)(ArducamCamera *, uint8_t *);
+  void (*writeReg)(ArducamCamera *, uint8_t, uint8_t);
+  uint8_t (*readReg)(ArducamCamera *, uint8_t);
+  uint8_t (*busRead)(ArducamCamera *, int);
+  uint8_t (*busWrite)(ArducamCamera *, int, int);
+  void (*flushFifo)(ArducamCamera *);
+  void (*startCapture)(ArducamCamera *);
+  void (*clearFifoFlag)(ArducamCamera *);
+  uint32_t (*readFifoLength)(ArducamCamera *);
+  uint8_t (*getBit)(ArducamCamera *, uint8_t, uint8_t);
+  void (*setFifoBurst)(ArducamCamera *);
+  void (*setCapture)(ArducamCamera *);
+  void (*waitI2cIdle)(ArducamCamera *);
+  void (*lowPowerOn)(ArducamCamera *);
+  void (*lowPowerOff)(ArducamCamera *);
+  void (*registerCallback)(ArducamCamera *, BUFFER_CALLBACK, uint8_t,
+                           STOP_HANDLE);
 };
 
 /// @endcond
@@ -339,7 +346,7 @@ ArducamCamera createArducamCamera(int cs);
 //! @param camera ArducamCamera instance
 //! @return Return operation status
 //**********************************************
-CamStatus reset(ArducamCamera* camera);
+CamStatus reset(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -348,7 +355,7 @@ CamStatus reset(ArducamCamera* camera);
 //! @return Return operation status
 //**********************************************
 
-CamStatus begin(ArducamCamera* camera);
+CamStatus begin(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -361,7 +368,8 @@ CamStatus begin(ArducamCamera* camera);
 //! @return Return operation status
 //!
 //! @note The mode parameter must be the resolution wh
-CamStatus takePicture(ArducamCamera* camera, CAM_IMAGE_MODE mode, CAM_IMAGE_PIX_FMT pixel_format);
+CamStatus takePicture(ArducamCamera *camera, CAM_IMAGE_MODE mode,
+                      CAM_IMAGE_PIX_FMT pixel_format);
 
 //**********************************************
 //!
@@ -378,7 +386,8 @@ CamStatus takePicture(ArducamCamera* camera, CAM_IMAGE_MODE mode, CAM_IMAGE_PIX_
 //! @note The mode parameter must be the resolution which the current camera
 //! supported
 //**********************************************
-CamStatus takeMultiPictures(ArducamCamera* camera, CAM_IMAGE_MODE mode, CAM_IMAGE_PIX_FMT pixel_format, uint8_t number);
+CamStatus takeMultiPictures(ArducamCamera *camera, CAM_IMAGE_MODE mode,
+                            CAM_IMAGE_PIX_FMT pixel_format, uint8_t number);
 
 //**********************************************
 //!
@@ -392,9 +401,9 @@ CamStatus takeMultiPictures(ArducamCamera* camera, CAM_IMAGE_MODE mode, CAM_IMAG
 //! @note Before calling this function, you need to register the callback
 //! function.The default image pixel format is JPEG
 //**********************************************
-CamStatus startPreview(ArducamCamera* camera, CAM_VIDEO_MODE mode);
+CamStatus startPreview(ArducamCamera *camera, CAM_VIDEO_MODE mode);
 
-void captureThread(ArducamCamera* camera);
+void captureThread(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -405,7 +414,7 @@ void captureThread(ArducamCamera* camera);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus stopPreview(ArducamCamera* camera);
+CamStatus stopPreview(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -417,7 +426,7 @@ CamStatus stopPreview(ArducamCamera* camera);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setAutoExposure(ArducamCamera* camera, uint8_t val);
+CamStatus setAutoExposure(ArducamCamera *camera, uint8_t val);
 
 //**********************************************
 //!
@@ -431,7 +440,7 @@ CamStatus setAutoExposure(ArducamCamera* camera, uint8_t val);
 //! @note Before calling this function, you need to use the @ref
 //! setAutoExposure() function to turn off the auto exposure function
 //**********************************************
-CamStatus setAbsoluteExposure(ArducamCamera* camera, uint32_t val);
+CamStatus setAbsoluteExposure(ArducamCamera *camera, uint32_t val);
 
 //**********************************************
 //!
@@ -443,7 +452,7 @@ CamStatus setAbsoluteExposure(ArducamCamera* camera, uint32_t val);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setAutoISOSensitive(ArducamCamera* camera, uint8_t val);
+CamStatus setAutoISOSensitive(ArducamCamera *camera, uint8_t val);
 
 //**********************************************
 //!
@@ -457,7 +466,7 @@ CamStatus setAutoISOSensitive(ArducamCamera* camera, uint8_t val);
 //! @note Before calling this function, you need to use the @ref
 //! setAutoISOSensitive() function to turn off the auto gain function
 //**********************************************
-CamStatus setISOSensitivity(ArducamCamera* camera, int iso_sense);
+CamStatus setISOSensitivity(ArducamCamera *camera, int iso_sense);
 
 //**********************************************
 //!
@@ -470,7 +479,7 @@ CamStatus setISOSensitivity(ArducamCamera* camera, int iso_sense);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setAutoWhiteBalance(ArducamCamera* camera, uint8_t val);
+CamStatus setAutoWhiteBalance(ArducamCamera *camera, uint8_t val);
 
 //**********************************************
 //!
@@ -482,7 +491,8 @@ CamStatus setAutoWhiteBalance(ArducamCamera* camera, uint8_t val);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setAutoWhiteBalanceMode(ArducamCamera* camera, CAM_WHITE_BALANCE mode);
+CamStatus setAutoWhiteBalanceMode(ArducamCamera *camera,
+                                  CAM_WHITE_BALANCE mode);
 
 //**********************************************
 //!
@@ -494,7 +504,7 @@ CamStatus setAutoWhiteBalanceMode(ArducamCamera* camera, CAM_WHITE_BALANCE mode)
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setColorEffect(ArducamCamera* camera, CAM_COLOR_FX effect);
+CamStatus setColorEffect(ArducamCamera *camera, CAM_COLOR_FX effect);
 
 //**********************************************
 //!
@@ -508,7 +518,7 @@ CamStatus setColorEffect(ArducamCamera* camera, CAM_COLOR_FX effect);
 //!
 //! @note Only `5MP` cameras support auto focus control
 //**********************************************
-CamStatus setAutoFocus(ArducamCamera* camera, uint8_t val);
+CamStatus setAutoFocus(ArducamCamera *camera, uint8_t val);
 
 //**********************************************
 //!
@@ -520,7 +530,7 @@ CamStatus setAutoFocus(ArducamCamera* camera, uint8_t val);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setSaturation(ArducamCamera* camera, CAM_STAURATION_LEVEL level);
+CamStatus setSaturation(ArducamCamera *camera, CAM_STAURATION_LEVEL level);
 
 //**********************************************
 //!
@@ -532,7 +542,7 @@ CamStatus setSaturation(ArducamCamera* camera, CAM_STAURATION_LEVEL level);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setEV(ArducamCamera* camera, CAM_EV_LEVEL level);
+CamStatus setEV(ArducamCamera *camera, CAM_EV_LEVEL level);
 
 //**********************************************
 //!
@@ -544,7 +554,7 @@ CamStatus setEV(ArducamCamera* camera, CAM_EV_LEVEL level);
 //! @return Return operation status
 //!
 //********************************************
-CamStatus setContrast(ArducamCamera* camera, CAM_CONTRAST_LEVEL level);
+CamStatus setContrast(ArducamCamera *camera, CAM_CONTRAST_LEVEL level);
 
 //**********************************************
 //!
@@ -556,7 +566,7 @@ CamStatus setContrast(ArducamCamera* camera, CAM_CONTRAST_LEVEL level);
 //! @return Return operation status
 //!
 //**********************************************
-CamStatus setBrightness(ArducamCamera* camera, CAM_BRIGHTNESS_LEVEL level);
+CamStatus setBrightness(ArducamCamera *camera, CAM_BRIGHTNESS_LEVEL level);
 
 //**********************************************
 //!
@@ -570,7 +580,7 @@ CamStatus setBrightness(ArducamCamera* camera, CAM_BRIGHTNESS_LEVEL level);
 //!
 //! @note Only `3MP` cameras support sharpness control
 //**********************************************
-CamStatus setSharpness(ArducamCamera* camera, CAM_SHARPNESS_LEVEL level);
+CamStatus setSharpness(ArducamCamera *camera, CAM_SHARPNESS_LEVEL level);
 
 //**********************************************
 //!
@@ -584,7 +594,7 @@ CamStatus setSharpness(ArducamCamera* camera, CAM_SHARPNESS_LEVEL level);
 //!
 //! @note Only `3MP` cameras support sharpness control
 //**********************************************
-CamStatus setImageQuality(ArducamCamera* camera, IMAGE_QUALITY qualtiy);
+CamStatus setImageQuality(ArducamCamera *camera, IMAGE_QUALITY qualtiy);
 
 //**********************************************
 //!
@@ -598,7 +608,7 @@ CamStatus setImageQuality(ArducamCamera* camera, IMAGE_QUALITY qualtiy);
 //!
 //! @note Transmission length should be less than `255`
 //**********************************************
-uint32_t readBuff(ArducamCamera* camera, uint8_t* buff, uint32_t length);
+uint32_t readBuff(ArducamCamera *camera, uint8_t *buff, uint32_t length);
 
 //**********************************************
 //!
@@ -611,7 +621,7 @@ uint32_t readBuff(ArducamCamera* camera, uint8_t* buff, uint32_t length);
 //! @note Before calling this function, make sure that the data is available in
 //! the buffer
 //**********************************************
-uint8_t readByte(ArducamCamera* camera);
+uint8_t readByte(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -624,7 +634,7 @@ uint8_t readByte(ArducamCamera* camera);
 //! register
 //!
 //**********************************************
-void debugWriteRegister(ArducamCamera* camera, uint8_t* buff);
+void debugWriteRegister(ArducamCamera *camera, uint8_t *buff);
 
 //**********************************************
 //!
@@ -638,7 +648,8 @@ void debugWriteRegister(ArducamCamera* camera, uint8_t* buff);
 //!
 //! @note Transmission length should be less than `255`
 //**********************************************
-void registerCallback(ArducamCamera* camera, BUFFER_CALLBACK function, uint8_t blockSize, STOP_HANDLE handle);
+void registerCallback(ArducamCamera *camera, BUFFER_CALLBACK function,
+                      uint8_t blockSize, STOP_HANDLE handle);
 
 //**********************************************
 //!
@@ -647,7 +658,7 @@ void registerCallback(ArducamCamera* camera, BUFFER_CALLBACK function, uint8_t b
 //! @param camera ArducamCamera instance
 //!
 //**********************************************
-void lowPowerOn(ArducamCamera* camera);
+void lowPowerOn(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -656,7 +667,7 @@ void lowPowerOn(ArducamCamera* camera);
 //! @param camera ArducamCamera instance
 //!
 //**********************************************
-void lowPowerOff(ArducamCamera* camera);
+void lowPowerOff(ArducamCamera *camera);
 
 //**********************************************
 //!
@@ -666,13 +677,18 @@ void lowPowerOff(ArducamCamera* camera);
 //!
 //! @return Returns camera status
 //**********************************************
-uint8_t cameraHeartBeat(ArducamCamera* camera);
+uint8_t cameraHeartBeat(ArducamCamera *camera);
 
-typedef enum { Camera_uninit = 0, Camera_init, Camera_open, Camera_close } CameraStatus;
+typedef enum {
+  Camera_uninit = 0,
+  Camera_init,
+  Camera_open,
+  Camera_close
+} CameraStatus;
 
 struct ClassCamera {
-    ArducamCamera cam;
-    CameraStatus status;
+  ArducamCamera cam;
+  CameraStatus status;
 };
 
 #ifdef __cplusplus
