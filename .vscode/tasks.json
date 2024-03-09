@@ -25,17 +25,5 @@
 				"CMake: build"
 			],
 		},
-		{
-			"label": "start-gdbserver",
-			"type": "shell",
-			"command": "ssh",
-			"args": [
-				"beuss@raspi0w",
-				"bash -l -c 'gdbserver :2000 /home/beuss/test/camera'"
-			],
-			"dependsOn": [
-				"transfer-binary"
-			]
-		}
 	]
 }
