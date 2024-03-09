@@ -8,3 +8,9 @@ Debugging with https://marketplace.visualstudio.com/items?itemName=webfreak.debu
 Need gcc-multilib for clangd to find proper headers.
 
 Based on: https://github.com/ArduCAM/RaspberryPi/tree/master/SPI_Camera
+
+Pin config (see spiBegin()):
+- MOSI GPIO10 (19)
+- MISO GPIO 9 (21)
+- SCLK GPIO11 (23)
+- CS GPIO 8 (24)
