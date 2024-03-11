@@ -11,13 +11,14 @@
 #include "Platform.h"
 #include <stdio.h>
 #include <termio.h>
+#include <unistd.h>
 
 int key = 0;
 int csPin = 8;
 ArducamCamera myCAM;
 int count = 0;
 char name[10] = {0};
-unsigned char imageBuff[300] = {0};
+unsigned char imageBuff[0xFF] = {0};
 unsigned int imageLength = 0;
 int scanKeyboard() {
   int in;
@@ -48,7 +49,7 @@ void saveImage(ArducamCamera myCAM) {
     return;
   }
   while (myCAM.receivedLength) {
-    imageLength = readBuff(&myCAM, imageBuff, 200);
+    imageLength = readBuff(&myCAM, imageBuff, 0xFF);
     fwrite(imageBuff, 1, imageLength, fl);
   }
 
@@ -56,20 +57,50 @@ void saveImage(ArducamCamera myCAM) {
   count++;
 }
 
+#define MS_TO_US(ms) (ms * 1000)
+
 int main(void) {
   unsigned char sendBuff[10] = {0};
   unsigned char readBuff[10] = {0};
   myCAM = createArducamCamera(csPin);
   begin(&myCAM);
+
+  // Initialize auto focus
+  setAutoFocus(&myCAM, 0);
+  // setAutoFocus(&myCAM, 2);
+  setAutoExposure(&myCAM, 0);
+
+  setImageQuality(&myCAM, HIGH_QUALITY);
+
+  lowPowerOn(&myCAM);
+
+  // setAutoFocus(&myCAM, 1);
   printf("Camera Init Succeed\r\n");
   printf("Click the 's' button on the keyboard to save the image\r\n");
   printf("Press the keyboard 'q' key to exit\r\n");
+  int count = 0;
   while (1) {
     key = scanKeyboard();
     if (key == 's') //'s'
     {
       printf("\r\n");
-      takePicture(&myCAM, CAM_IMAGE_MODE_QVGA, CAM_IMAGE_PIX_FMT_JPG);
+      lowPowerOff(&myCAM);
+
+      // setAutoFocus(&myCAM, 0);
+      // Start focusing
+      setAutoFocus(&myCAM, 1);
+      // printf("Focusing finished\r\n");
+      usleep(MS_TO_US(1000));
+      //  setAutoFocus(&myCAM, 1);
+      //  takePicture(&myCAM, CAM_IMAGE_MODE_QXGA, CAM_IMAGE_PIX_FMT_JPG);
+
+      // setAutoExposure(&myCAM, 0);
+      // setAbsoluteExposure(&myCAM, UINT32_MAX - 10);
+      //  setEV(&myCAM, 5);
+
+      takePicture(&myCAM, CAM_IMAGE_MODE_WQXGA2, CAM_IMAGE_PIX_FMT_JPG);
+      lowPowerOn(&myCAM);
+
       saveImage(myCAM);
       printf("Image save succeed\r\n");
     } else if (key == 'q') {
