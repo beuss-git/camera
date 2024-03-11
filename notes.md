@@ -1,7 +1,8 @@
-Use this compiler:
+Use this compiler (instructions are in the repo, use the correct toolchain for the RPI3):
 https://github.com/tttapa/docker-arm-cross-toolchain
 
-Installed at: /home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin
+
+~~Installed at: /home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin
 
 Debugging with https://marketplace.visualstudio.com/items?itemName=webfreak.debug
 
