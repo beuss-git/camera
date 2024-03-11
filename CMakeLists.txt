@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
 
-set(CMAKE_C_COMPILER "/home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin/armv6-rpi-linux-gnueabihf-gcc")
-set(CMAKE_CXX_COMPILER "/home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin/armv6-rpi-linux-gnueabihf-g++")
+#set(CMAKE_C_COMPILER "/home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin/armv6-rpi-linux-gnueabihf-gcc")
+#set(CMAKE_CXX_COMPILER "/home/beuss/opt/x-tools/armv6-rpi-linux-gnueabihf/bin/armv6-rpi-linux-gnueabihf-g++")
+
+set(CMAKE_C_COMPILER "/home/beuss/opt/x-tools/armv8-rpi3-linux-gnueabihf/bin/armv8-rpi3-linux-gnueabihf-gcc")
+set(CMAKE_CXX_COMPILER "/home/beuss/opt/x-tools/armv8-rpi3-linux-gnueabihf/bin/armv8-rpi3-linux-gnueabihf-g++")
 
 set(COMPILER_FLAGS "-g -fPIE -pie -fdiagnostics-color=always")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILER_FLAGS}")
