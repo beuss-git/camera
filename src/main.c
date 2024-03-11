@@ -76,7 +76,8 @@ int main(void) {
 
   // setAutoFocus(&myCAM, 1);
   printf("Camera Init Succeed\r\n");
-  printf("Click the 's' button on the keyboard to save the image\r\n");
+  printf("Click the 's' button on the keyboard to save the image and 'f' to "
+         "trigger focus\r\n");
   printf("Press the keyboard 'q' key to exit\r\n");
   int count = 0;
   while (1) {
@@ -107,6 +108,9 @@ int main(void) {
       printf("\r\n");
       printf("quit picture mode\r\n");
       break;
+    } else if (key == 'f') {
+      printf("Focusing\n");
+      setAutoFocus(&myCAM, 1);
     }
   }
   spiRelease();
